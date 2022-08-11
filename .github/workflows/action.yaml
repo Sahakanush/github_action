@@ -50,7 +50,7 @@ jobs:
           
       - name: Set up Docker Build
         #if: job.DraftPR.steps.Pytest.outcome == 'success'
-        uses: docker/setup-buildx-action@v1
+        uses: docker/setup-build-action@v1
         
       - name: Build and push 
         #if: job.DraftPR.steps.Pytest.outcome == 'success'
