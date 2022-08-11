@@ -34,8 +34,7 @@ jobs:
       - name: UT failure
         if: steps.Pytest.outcome != 'success'          
         id: tag_version
-        run: echo "hello"
-             exit 1 
+        run: echo "hello"           
         
   NormalPR:
     runs-on: ubuntu-latest
