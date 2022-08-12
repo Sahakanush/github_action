@@ -62,7 +62,8 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/flaskapp1:latest
-          
-   #     uses: mathieudutour/github-tag-action@v6.0
-   #     with:
-   #       github_token: ${{ secrets.GIT_TOKEN }}
+      - name: ypan   
+        if: github.ref == 'refs/heads/main'  
+        uses: mathieudutour/github-tag-action@v6.0
+        with:
+          github_token: ${{ secrets.GIT_TOKEN }}
