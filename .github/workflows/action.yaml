@@ -44,9 +44,9 @@ jobs:
         run: echo "All ok"
         
   NormalPR:
-    runs-on: ubuntu-latest
-   # needs: DraftPR
-    if: github.event.pull_request.draft != true && ${{ jobs.DraftPR.result != 'failure' }}
+    runs-on: ubuntu-latest    
+    if: github.event.pull_request.draft != true && jobs.DraftPR.result != 'skipped' 
+    needs: DraftPR
     
     steps:        
       - name: Set up Docker Build
