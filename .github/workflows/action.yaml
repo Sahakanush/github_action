@@ -1,7 +1,7 @@
 name: Pipeline
 
 on:
-  push:
+ # push:
   pull_request:
     branches: [main]
     types: [review_requested, ready_for_review]
@@ -37,16 +37,10 @@ jobs:
         uses: mathieudutour/github-tag-action@v6.0
         with:
           github_token: ${{ secrets.GIT_TOKEN }}
-  Tunel:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Message
-        run: echo "All ok"
         
   NormalPR:
     runs-on: ubuntu-latest    
-    if: github.event.pull_request.draft != true && jobs.DraftPR.result != 'skipped' 
-    needs: DraftPR
+    if: github.event.pull_request.draft != true 
     
     steps:        
       - name: Set up Docker Build
