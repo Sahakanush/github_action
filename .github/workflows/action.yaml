@@ -1,7 +1,7 @@
 name: Pipeline
 
 on:
- # push:
+  push:
   pull_request:
     branches: [main]
     types: [review_requested, ready_for_review]
@@ -9,7 +9,7 @@ on:
 jobs:
   DraftPR:
     runs-on: ubuntu-latest    
-    if: github.event.pull_request.draft == true
+    if: github.event.pull_request.draft != true
     
     steps:
       - uses: actions/checkout@v3      
