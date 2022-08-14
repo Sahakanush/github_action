@@ -31,7 +31,7 @@ jobs:
         #id: tag_version
         #uses: mathieudutour/github-tag-action@v6.0
         #with:
-      - uses: rickstaa/action-create-tag@v1
+        uses: rickstaa/action-create-tag@v1
         with:
           tag: RC-[0-9]
         
