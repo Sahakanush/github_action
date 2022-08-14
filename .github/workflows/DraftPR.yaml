@@ -25,11 +25,6 @@ jobs:
       - name: UT success
         if: steps.Pytest.outcome == 'success' 
         run: echo "UT success !!"
-        #uses: jinmayamashita/ready-for-review@1.0.0     #change draft PR to normal PR 
-        #with:
-        #  in-progress-label: 'InProgress'
-        #  ready-for-review-label: 'ReadyForReview'
-        #  repo-token: ${{ secrets.GIT_TOKEN }}
         
       - name: UT failure
         if: steps.Pytest.outcome != 'success'          
@@ -38,7 +33,7 @@ jobs:
         #with:
         uses: Roang-zero1/github-create-release-action@v2
         with:
-          version_regex: '^RC-[[:digit:]]$\n'
+          version_regex: '^RC\-[[:digit:]]$\n'
         env:
           GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
         #  github_token: ${{ secrets.GIT_TOKEN }}
