@@ -31,11 +31,8 @@ jobs:
         #id: tag_version
         #uses: mathieudutour/github-tag-action@v6.0
         #with:
-        uses: Roang-zero1/github-create-release-action@v2
+      - uses: rickstaa/action-create-tag@v1
         with:
-          version_regex: ^v[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+
-        env:
-          GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
-        #  github_token: ${{ secrets.GIT_TOKEN }}
+          tag: RC-[0-9]
         
   
