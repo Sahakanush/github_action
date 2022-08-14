@@ -1,23 +1,21 @@
-name: Pipeline
+name: DraftPR
 
 on:
-  push:
-    branches:
-      - "RC-[0-9]"
+ # push:
   pull_request:
     branches: [main]
     types: [review_requested, ready_for_review]
     
 jobs:
-  DraftPR:
+  UnitTest:
     runs-on: ubuntu-latest    
     if: github.event.pull_request.draft != true
     
     steps:
-      - uses: actions/checkout@v3      
+      - uses: actions/checkout@v3   
+      
       - name: Test with pytest
         id: Pytest
-        
         run: |
           pip install Flask
           pip install pytest
@@ -36,10 +34,12 @@ jobs:
         
       - name: UT failure
         if: steps.Pytest.outcome != 'success'          
-        id: tag_version
+        #id: tag_version
         #uses: mathieudutour/github-tag-action@v6.0
         #with:
-        uses: kazoohr/rc-branch-action@main
+        uses: Roang-zero1/github-create-release-action@v2
+        with:
+          version_regex: '^RC-[[:digit:]]$\n'
         env:
           GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
         #  github_token: ${{ secrets.GIT_TOKEN }}
