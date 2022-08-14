@@ -33,7 +33,7 @@ jobs:
         #with:
         uses: Roang-zero1/github-create-release-action@v2
         with:
-          version_regex: '^RC\-[[:digit:]]$\n'
+          version_regex: ^RC[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+
         env:
           GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
         #  github_token: ${{ secrets.GIT_TOKEN }}
