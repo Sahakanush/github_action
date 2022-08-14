@@ -34,6 +34,8 @@ jobs:
       
         id: previoustag
         uses: "WyriHaximus/github-action-get-previous-tag@v1"
+        with:
+          fallback: 1.0.0
         #uses: rickstaa/action-create-tag@v1
     #    with:
         #  tag: RC-[0-9]
