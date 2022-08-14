@@ -21,23 +21,26 @@ jobs:
           pip install pytest
           pip install pytest-cov
           pytest test_hello.py
-          ls
         continue-on-error: true
               
       - name: UT success
-        if: steps.Pytest.outcome == 'success'      
-        uses: jinmayamashita/ready-for-review@1.0.0     #change draft PR to normal PR 
-        with:
-          in-progress-label: 'InProgress'
-          ready-for-review-label: 'ReadyForReview'
-          repo-token: ${{ secrets.GIT_TOKEN }}
+        if: steps.Pytest.outcome == 'success' 
+        run: echo "UT success !!"
+        #uses: jinmayamashita/ready-for-review@1.0.0     #change draft PR to normal PR 
+        #with:
+        #  in-progress-label: 'InProgress'
+        #  ready-for-review-label: 'ReadyForReview'
+        #  repo-token: ${{ secrets.GIT_TOKEN }}
         
       - name: UT failure
         if: steps.Pytest.outcome != 'success' && github.ref == 'refs/heads/main'          
         id: tag_version
-        uses: mathieudutour/github-tag-action@v6.0
-        with:
-          github_token: ${{ secrets.GIT_TOKEN }}
+        #uses: mathieudutour/github-tag-action@v6.0
+        #with:
+        uses: kazoohr/rc-branch-action@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
+        #  github_token: ${{ secrets.GIT_TOKEN }}
         
   NormalPR:
     runs-on: ubuntu-latest    
