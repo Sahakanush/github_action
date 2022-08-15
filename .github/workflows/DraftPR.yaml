@@ -32,7 +32,7 @@ jobs:
         
         uses: rickstaa/action-create-tag@v1
         with:
-          tag: "tazatag2"
+          tag: "tazatag3"
           message: "Latest release"
   CheckTag: 
     runs-on: ubuntu-latest
@@ -40,8 +40,11 @@ jobs:
     steps:
       - uses: little-core-labs/get-git-tag@v3.0.1
         id: tagName
-        with:
-          tagRegex: "foobar-(.*)"  # Optional. Returns specified group text as tag name. Full tag string is returned if regex is not defined.
-          tagRegexGroup: 1 # Optional. Default is 1.
-      
+      - name: Set env
+        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+      - name: Test
+        run: |
+          echo $RELEASE_VERSION
+          echo ${{ env.RELEASE_VERSION }}
+  
       
