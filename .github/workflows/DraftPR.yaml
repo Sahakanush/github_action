@@ -34,11 +34,12 @@ jobs:
         with:
           tag: "tazatag"
           message: "Latest release"
-          
+  CheckTag: 
+    runs-on: ubuntu-latest
+    steps:
       - name: get tag   
         uses: dawidd6/action-get-tag@v1
-        with:
-    # Optionally strip `v` prefix
+        with:    
           strip_v: true
       - name: Use tag
         run: echo ${{steps.tag.outputs.tag}}
