@@ -29,6 +29,13 @@ jobs:
       - name: UT failure
         if: steps.Pytest.outcome != 'success'  
         id: tag
+        
+        uses: rickstaa/action-create-tag@v1
+        with:
+          tag: "tazatag"
+          message: "Latest release"
+          
+      - name: get tag   
         uses: dawidd6/action-get-tag@v1
         with:
     # Optionally strip `v` prefix
@@ -36,7 +43,4 @@ jobs:
       - name: Use tag
         run: echo ${{steps.tag.outputs.tag}}
         
-      - uses: rickstaa/action-create-tag@v1
-        with:
-          tag: "tazatag"
-          message: "Latest release"
+      
