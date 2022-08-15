@@ -1,0 +1,40 @@
+name: DraftPR
+
+on:
+  push:
+    branches:
+      branch1
+  pull_request:
+    
+jobs:
+  UnitTest:
+    runs-on: ubuntu-latest    
+    if: github.event.pull_request.draft != true
+    
+    steps:
+      - uses: actions/checkout@v3   
+      
+      - name: Test with pytest
+        id: Pytest
+        run: |
+          pip install Flask
+          pip install pytest
+          pip install pytest-cov
+          pytest test_hello.py
+        continue-on-error: true
+              
+      - name: UT success
+        if: steps.Pytest.outcome == 'success' 
+        run: echo "UT success !!"
+        
+      - name: UT failure
+        if: steps.Pytest.outcome != 'success' 
+        run: echo "UT failure !!"
+        
+      - name: Create new tag if failure
+        if: steps.Pytest.outcome != 'success' 
+        uses: mathieudutour/github-tag-action@v6.0
+        with:
+          github_token: ${{ secrets.GIT_TOKEN }}
+          append_to_pre_release_tag: RC
+  
