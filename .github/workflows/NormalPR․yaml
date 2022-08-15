@@ -2,7 +2,6 @@ name:  NormalPR
 
 on:
   push:
-    
 jobs:
   Dockerx:
     runs-on: ubuntu-latest    
