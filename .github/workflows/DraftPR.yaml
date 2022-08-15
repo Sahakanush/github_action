@@ -1,10 +1,7 @@
 name: DraftPR
 
 on:
-  push:
-    branches:
-      branch1
-  pull_request:
+  [push, pull_request]
     
 jobs:
   UnitTest:
