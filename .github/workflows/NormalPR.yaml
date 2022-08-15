@@ -1,9 +1,7 @@
 name:  NormalPR
 
 on:
-  push:
-    branches:
-      branch1
+  [pull_request]
   
 jobs:
   docker:
