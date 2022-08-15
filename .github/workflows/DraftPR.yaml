@@ -36,6 +36,7 @@ jobs:
           message: "Latest release"
   CheckTag: 
     runs-on: ubuntu-latest
+    needs: [UnitTest]
     steps:
       - name: get tag   
         uses: dawidd6/action-get-tag@v1
