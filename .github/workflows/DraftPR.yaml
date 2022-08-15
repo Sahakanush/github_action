@@ -35,3 +35,8 @@ jobs:
           strip_v: true
       - name: Use tag
         run: echo ${{steps.tag.outputs.tag}}
+        
+      - uses: rickstaa/action-create-tag@v1
+        with:
+          tag: "tazatag"
+          message: "Latest release"
