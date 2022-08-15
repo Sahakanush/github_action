@@ -2,13 +2,11 @@ name:  NormalPR
 
 on:
   push:
-  pull_request:
-    types: [review_requested, ready_for_review]
     
 jobs:
   Dockerx:
     runs-on: ubuntu-latest    
-    if: github.event.pull_request.draft == true 
+    if: github.event.pull_request.draft != true 
     
     steps:        
       - name: Set up Docker Build
