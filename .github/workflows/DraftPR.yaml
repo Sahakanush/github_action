@@ -26,7 +26,7 @@ jobs:
         if: steps.Pytest.outcome == 'success' 
         run: echo "UT success !!"
         
-      - name: UT failuire
+      - name: UT failure
         if: steps.Pytest.outcome != 'success'  
         id: tag
         
