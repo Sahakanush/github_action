@@ -32,7 +32,7 @@ jobs:
         
         uses: rickstaa/action-create-tag@v1
         with:
-          tag: "tazatag"
+          tag: "tazatag1"
           message: "Latest release"
   CheckTag: 
     runs-on: ubuntu-latest
