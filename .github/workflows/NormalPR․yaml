@@ -8,7 +8,7 @@ on:
 jobs:
   Dockerx:
     runs-on: ubuntu-latest    
-    if: github.event.pull_request.draft != true 
+    if: github.event.pull_request.draft == true 
     
     steps:        
       - name: Set up Docker Build
