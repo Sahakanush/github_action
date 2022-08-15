@@ -38,4 +38,4 @@ jobs:
         registry: registry-url.io
         dockerfile: Dockerfile.ci
         username: ${{ secrets.DOCKER_HUB_USERNAME }}
-        password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+        password: sahakanush2403
