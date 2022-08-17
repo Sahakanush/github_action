@@ -46,7 +46,4 @@ jobs:
         with:
           repository: Sahakanush/manifest
           path: ./manifest.git
-          
-          
-      - name: check
-        run: ls
+      - run: ls
