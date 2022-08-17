@@ -2,7 +2,7 @@ FROM python
 
 USER 0
 
-COPY ./app1.py /app/
+COPY ./developers_code/app1.py /app/
 
 RUN pip install flask
 
