@@ -2,13 +2,12 @@ name:  NormalPR
 
 on:
   #push:
-
   pull_request_target:
   
 jobs:
   docker:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.draft != true 
+    if: ! github.event.pull_request.draft
     steps:
       
       - name: Checkout
