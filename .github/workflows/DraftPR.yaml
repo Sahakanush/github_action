@@ -9,7 +9,7 @@ on:
 jobs:
   UnitTest:
     runs-on: ubuntu-latest    
-    if: github.event.pull_request.draft != true
+    if: github.event.pull_request.draft == true
     
     steps:
       - uses: actions/checkout@v3   
