@@ -3,8 +3,7 @@ name:  NormalPR
 on:
   #push:
 
-  pull_request:
-    branches: [branch1]
+  pull_request_target:
   
 jobs:
   docker:
