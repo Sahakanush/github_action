@@ -2,10 +2,11 @@ name: DraftPR
 
 on:
  # push:
-   # branches:
-    #  branch1
+  #  branches:
+   #   branch1
   pull_request:
    types: [opened, synchronize]
+  pull_request_target:
     
 jobs:
   UnitTest:
