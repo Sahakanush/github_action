@@ -31,8 +31,4 @@ jobs:
           file: Dockerfile
           push: true  
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/flaskapp02:latest
-      
-      - name: 'Get Previous tag'
-        id: previoustag
-        run: echo $GITHUB_REF
-
+  
