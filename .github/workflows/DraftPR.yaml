@@ -45,7 +45,8 @@ jobs:
         uses: actions/checkout@master
         with:
           repository: Sahakanush/manifest.git
-          token: ${{ secrets.GIT_TOKEN }}
+          path: ./manifest.git
+          
           
       - name: check
         run: ls
