@@ -1,5 +1,5 @@
 import yaml
 
-with open(r'manifest\mf') as file:
+with open("mf", "r") as file:
   f_list = yaml.load(file, Loader=yaml.FullLoader)
   print(f_list)
