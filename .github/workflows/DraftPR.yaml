@@ -1,14 +1,15 @@
 name: DraftPR
 
 on:
-  push:
-  pull_request:
-  #  types: [review_requested, ready_for_review]
+ # push:
+   # branches:
+    #  branch1
+  pull_request_target:
     
 jobs:
   UnitTest:
     runs-on: ubuntu-latest    
-    if: github.event.pull_request.draft == true
+    if: github.event.pull_request.draft
     
     steps:
       - uses: actions/checkout@v3   
@@ -16,10 +17,11 @@ jobs:
       - name: Test with pytest
         id: Pytest
         run: |
+          ls
           pip install Flask
           pip install pytest
           pip install pytest-cov
-          pytest test_hello.py
+          pytest ./developers_code/test_hello.py
         continue-on-error: true
               
       - name: UT success
@@ -27,24 +29,12 @@ jobs:
         run: echo "UT success !!"
         
       - name: UT failure
-        if: steps.Pytest.outcome != 'success'  
-        id: tag
+        if: steps.Pytest.outcome != 'success' 
+        run: echo "UT failure !!"
         
-        uses: rickstaa/action-create-tag@v1
+      - name: Create new tag if failure
+        if: steps.Pytest.outcome != 'success' 
+        uses: mathieudutour/github-tag-action@v6.0
         with:
-          tag: "tazatag3"
-          message: "Latest release"
-  CheckTag: 
-    runs-on: ubuntu-latest
-    needs: [UnitTest]
-    steps:
-      - uses: little-core-labs/get-git-tag@v3.0.1
-        id: tagName
-      - name: Set env
-        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
-      - name: Test
-        run: |
-          echo $RELEASE_VERSION
-          echo ${{ env.RELEASE_VERSION }}
-  
-      
+          github_token: ${{ secrets.GIT_TOKEN }}
+          append_to_pre_release_tag: RC
