@@ -1,4 +1,4 @@
-name:  NormalPR
+name:  NormalPr
 
 on:
   pull_request_target:
