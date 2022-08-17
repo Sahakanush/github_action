@@ -1,7 +1,7 @@
 name:  NormalPR
 
 on:
-  [push,pull_request]
+  [push,pull_request_target]
   
 jobs:
   docker:
