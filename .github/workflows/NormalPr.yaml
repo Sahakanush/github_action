@@ -2,7 +2,7 @@ name: NormalPr
 
 on:
   pull_request_target:
-  
+    types: [opened]
 jobs:
   docker:
     runs-on: ubuntu-latest
