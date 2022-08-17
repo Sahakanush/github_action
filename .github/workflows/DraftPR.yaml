@@ -56,6 +56,7 @@ jobs:
           pip install pyyaml
           git clone https://.:${{ secrets.GIT_TOKEN }}@github.com/Sahakanush/github_action
           ls
+          echo "__ S _____"
           cd github_action
           ls
  
