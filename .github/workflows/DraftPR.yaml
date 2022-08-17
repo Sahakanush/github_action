@@ -45,5 +45,6 @@ jobs:
         uses: actions/checkout@master
         with:
           repository: Sahakanush/manifest
-          path: ./manifest.git
+          path: ./manifest
+          submodules: true
       - run: ls
