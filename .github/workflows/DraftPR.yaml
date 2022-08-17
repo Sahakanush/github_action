@@ -18,7 +18,7 @@ jobs:
           pip install Flask
           pip install pytest
           pip install pytest-cov
-          pytest test_hello.py
+          pytest ./developers_code/test_hello.py
         continue-on-error: true
               
       - name: UT success
