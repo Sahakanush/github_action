@@ -40,24 +40,23 @@ jobs:
         with:
           github_token: ${{ secrets.GIT_TOKEN }}
           append_to_pre_release_tag: RC
+      
+  Change_image:
+    runs-on: ubuntu-latest     
+    
+    steps:
+      - name: Check out other repo
+        uses: actions/checkout@master
+        with:
+          repository: Sahakanush/manifest
+          path: ./manifest
+          
       - name: Change tag from m.yaml
         run: |
-          git clone https://.:${{ secrets.GIT_TOKEN }}@github.com/Sahakanush/manifest
-          cd manifest
+          pip install pyyaml
+          git clone https://.:${{ secrets.GIT_TOKEN }}@github.com/Sahakanush/github_action
           ls
- # Change_image:
- #   runs-on: ubuntu-latest     
-    
-  #  steps:
-  #    - name: Check out other repo
-  #      uses: actions/checkout@master
-   #     with:
-  #        repository: Sahakanush/manifest
-  #        path: ./manifest
-  #        
-  #    - run: |
-
-  #        touch a.py
- #         ls
+          cd github_action
+          ls
  
  
