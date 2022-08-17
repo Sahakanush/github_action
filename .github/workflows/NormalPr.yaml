@@ -6,7 +6,7 @@ on:
 jobs:
   docker:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.draft == 0
+    #if: github.event.pull_request.draft == 0
     steps:
       
       - name: Checkout
