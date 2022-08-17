@@ -1,8 +1,9 @@
 name:  NormalPR
 
 on:
-  #push:
   pull_request_target:
+    types: ['opened', 'edited', 'reopened', 'synchronize', 'ready_for_review']
+
   
 jobs:
   docker:
