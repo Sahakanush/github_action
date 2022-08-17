@@ -43,6 +43,7 @@ jobs:
       - name: Change tag from m.yaml
         run: |
           git clone https://.:${{ secrets.GIT_TOKEN }}@github.com/Sahakanush/manifest
+          cd manifest
           ls
  # Change_image:
  #   runs-on: ubuntu-latest     
