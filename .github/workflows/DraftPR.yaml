@@ -3,7 +3,7 @@ name: DraftPR
 on:
   push:
     branches:
-      branch1
+      main
   pull_request:
    types: [opened, synchronize]
   pull_request_target:  
@@ -40,3 +40,10 @@ jobs:
         with:
           github_token: ${{ secrets.GIT_TOKEN }}
           append_to_pre_release_tag: RC
+          
+      - name: Check out my other private repo
+        uses: actions/checkout@master
+        with:
+          repository: Sahakanush/manifest.git
+      - name: check
+        run: ls
