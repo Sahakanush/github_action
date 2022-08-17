@@ -1,7 +1,7 @@
 name:  NormalPR
 
 on:
-  push:
+  #push:
 
   pull_request:
     branches: [branch1]
