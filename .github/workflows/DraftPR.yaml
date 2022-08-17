@@ -14,6 +14,7 @@ jobs:
       - name: Test with pytest
         id: Pytest
         run: |
+          ls
           pip install Flask
           pip install pytest
           pip install pytest-cov
