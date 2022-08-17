@@ -1,6 +1,6 @@
 import yaml
 
-with open("mf", "r") as file:
+with open("mf", "a") as file:
   data_dict = yaml.dump(file)
   
   data_dict["image"] = "hello world!!!!!!"
