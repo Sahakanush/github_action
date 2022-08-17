@@ -50,4 +50,7 @@ jobs:
           repository: Sahakanush/manifest
           path: ./manifest
           
-      - run: ls
+      - run: |
+
+          touch a.py
+          ls
