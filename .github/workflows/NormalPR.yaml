@@ -1,7 +1,7 @@
 name:  NormalPR
 
 on:
-  [pull_request]
+  [push, pull_request]
   
 jobs:
   docker:
@@ -31,3 +31,14 @@ jobs:
           file: Dockerfile
           push: true  
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/flaskapp02:latest
+      
+      - name: checking    
+      
+        uses: oprypin/find-latest-tag@v1
+        with:
+          repository: octokit/rest.js  # The repository to scan.
+          releases-only: true  # We know that all relevant tags have a GitHub release for them.
+          id: octokit  # The step ID to refer to later.
+
+      - run: echo "Octokit is at version ${{ steps.octokit.outputs.tag }}"
+
