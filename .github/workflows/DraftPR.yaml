@@ -1,9 +1,9 @@
 name: DraftPR
 
 on:
- # push:
-   # branches:
-    #  branch1
+  push:
+    branches:
+      branch1
   pull_request:
    types: [opened, synchronize]
   pull_request_target:  
