@@ -49,16 +49,20 @@ jobs:
         uses: actions/checkout@master
         with:
           repository: Sahakanush/manifest
-          path: ./manifest       
-          submodules: recursive
+          path: ./manifest      
           
       - name: Change tag from m.yaml
         run: |
           pip install pyyaml
           git clone https://.:${{ secrets.GIT_TOKEN }}@github.com/Sahakanush/github_action
+          echo "__skizb__"
           ls
-          echo "__ S _____"
+          echo "__cd git___"
           cd github_action
           ls
+          echo "__ cd manif__"
+          ls ../manifest/
+        
+        
  
  
