@@ -7,10 +7,11 @@ on:
   pull_request:
    types: [opened, synchronize]
   pull_request_target:  
+  
 jobs:
   UnitTest:
     runs-on: ubuntu-latest    
-    #if: github.event.pull_request.draft == 'true'
+    #if: github.event.pull_request.draft == true
     
     steps:
       - uses: actions/checkout@v3   
