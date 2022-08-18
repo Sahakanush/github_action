@@ -40,17 +40,14 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-          
-      - name: Get tag
-        run: git describe
-          
+
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
           context: .
           file: Dockerfile
           push: true  
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/flaskapp02:latest
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/WebApp1:$GIT_TAG
       
   Change_image:
     runs-on: ubuntu-latest     
@@ -72,16 +69,15 @@ jobs:
           cd github_action/work_with_mf
           git describe
           
-          python3 change_tag.py mytagX
+          python3 change_tag.py mytagS
           
-          cd ../../manifest
-          git status
+          cd ../../manifest          
           git config --global user.name "sahakanush"
           git config --global user.email "sahakanush.terteryan2003@gmail.com"
           
-          #git add .
-          #git commit -m "Change Tag"
-          #git push
+          git add .
+          git commit -m "Change Tag"
+          git push
       
           
           
