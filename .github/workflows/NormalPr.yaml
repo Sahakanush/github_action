@@ -45,7 +45,8 @@ jobs:
         uses: actions/checkout@master
         with:
           repository: Sahakanush/manifest
-          path: ./manifest/      
+          path: ./manifest/   
+          token: ${{ secrets.GIT_TOKEN }}
           
       - name: Change tag from m.yaml
         run: |
@@ -56,19 +57,13 @@ jobs:
                    
           python3 change_tag.py mytagX
           
-#          cd ../../manifest
-#          git status
- #         git config --global user.name "sahakanush"
- #         git config --global user.email "sahakanush.terteryan2003@gmail.com"
+          cd ../../manifest
+          git status
+          git config --global user.name "sahakanush"
+          git config --global user.email "sahakanush.terteryan2003@gmail.com"
 
-  #        git add .
-   #       git commit -m "Change Tag"
-   #       git push
+          git add .
+          git commit -m "Change Tag"
+          git push
    
-      - name: Pushes to another repository
-        uses: cpina/github-action-push-to-another-repository@main
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.GIT_TOKEN }}
-        with:
-          destination-repository-name: 'manifest'
-          target-branch: main
+      
