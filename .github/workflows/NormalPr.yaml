@@ -2,17 +2,19 @@ name: NormalPr
 
 on:
   pull_request:
-    types: [opened, synchronize]
+    types: [opened]
+  pull_request_target:
+  
 jobs:
   docker:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.draft == 'false'
+    if: github.event.pull_request.draft != true
     steps:
       
       - name: Checkout
         uses: actions/checkout@v3
       
-     ## - name: Set up QEMU
+     # - name: Set up QEMU
      #   uses: docker/setup-qemu-action@v2
       
       - name: Set up Docker Buildx
@@ -31,4 +33,3 @@ jobs:
           file: Dockerfile
           push: true  
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/flaskapp02:latest
-  
