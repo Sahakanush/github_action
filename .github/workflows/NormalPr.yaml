@@ -54,8 +54,13 @@ jobs:
           git clone --branch branch1 https://.:${{ secrets.GIT_TOKEN }}@github.com/Sahakanush/github_action
           cp manifest/mf github_action/work_with_mf
           cd github_action/work_with_mf
-          echo "--------"
-          cat mf
-          python3 change_tag.py mytag
-          echo "---------"
-          cat mf
+          python3 change_tag.py mytag1
+          
+      - name: Push to Git
+        run: |
+          git config --global user.name "DevOpsTask"
+          git config --global user.email "DevOps@Task"
+
+          git add .
+          git commit -m "Change Tag"
+          git push
