@@ -17,7 +17,7 @@ jobs:
         run: |
           git clone --branch branch1 https://.:${{ secrets.GIT_TOKEN }}@github.com/Sahakanush/github_action
           cd github_action
-          git describe --tags
+          git describe --tags --abbrev=0
   Docker:
     runs-on: ubuntu-latest
     if: github.event.pull_request.draft != true
