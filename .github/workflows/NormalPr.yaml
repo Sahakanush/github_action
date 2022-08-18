@@ -73,6 +73,4 @@ jobs:
         id: tagName
           
       - name: Some other step # Output usage example
-        with:
-          tagname: ${{ steps.tagName.outputs.tag }}
         run: echo $GIT_TAG_NAME
