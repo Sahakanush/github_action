@@ -1,6 +1,7 @@
 name: NormalPr
 
 on:
+  push:
   pull_request:
     branches: branch1
     types: [opened]
@@ -9,7 +10,7 @@ on:
     branches: branch1
     
 jobs:
-  docker:
+  Docker:
     runs-on: ubuntu-latest
     if: github.event.pull_request.draft != true
     steps:
@@ -20,19 +21,36 @@ jobs:
      # - name: Set up QEMU
      #   uses: docker/setup-qemu-action@v2
       
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
-      
-      - name: Login to DockerHub
-        uses: docker/login-action@v2
+  #    - name: Set up Docker Buildx
+   #     uses: docker/setup-buildx-action@v2
+    #  
+  #    - name: Login to DockerHub
+   #     uses: docker/login-action@v2
+    #    with:
+     #     username: ${{ secrets.DOCKER_HUB_USERNAME }}
+      #    password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+      #
+      #- name: Build and push
+       # uses: docker/build-push-action@v3
+        #with:
+         # context: .
+          #file: Dockerfile
+     #     push: true  
+      #    tags: ${{ secrets.DOCKER_HUB_USERNAME }}/flaskapp02:latest
+  Change_image:
+    runs-on: ubuntu-latest     
+    needs: [Docker]
+    steps:
+      - name: Check out other repo
+        uses: actions/checkout@master
         with:
-          username: ${{ secrets.DOCKER_HUB_USERNAME }}
-          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-      
-      - name: Build and push
-        uses: docker/build-push-action@v3
-        with:
-          context: .
-          file: Dockerfile
-          push: true  
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/flaskapp02:latest
+          repository: Sahakanush/manifest
+          path: ./manifest/      
+          
+      - name: Change tag from m.yaml
+        run: |
+          pip install pyyaml
+          git clone https://.:${{ secrets.GIT_TOKEN }}@github.com/Sahakanush/github_action
+          cp manifest/mf github_action/work_with_mf
+          cd github_action/work_with_mf
+          python3 change_tag.py
