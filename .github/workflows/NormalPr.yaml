@@ -2,9 +2,11 @@ name: NormalPr
 
 on:
   pull_request:
+    branches: branch1
     types: [opened]
   pull_request_target:
     types: [opened]
+    branches: branch1
     
 jobs:
   docker:
