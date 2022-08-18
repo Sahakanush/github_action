@@ -10,6 +10,14 @@ on:
     branches: branch1
     
 jobs:
+  Get_tag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get tag
+        run: |
+          git clone --branch branch1 https://.:${{ secrets.GIT_TOKEN }}@github.com/Sahakanush/github_action
+          cd github_action
+          git describe
   Docker:
     runs-on: ubuntu-latest
     if: github.event.pull_request.draft != true
