@@ -58,8 +58,8 @@ jobs:
           
       - name: Push to Git
         run: |
-          git config --global user.name "DevOpsTask"
-          git config --global user.email "DevOps@Task"
+          git config --global user.name "Sahakanush"
+          git config --global user.email "sahakanush.terteryan2003@gmail.com"
 
           git add .
           git commit -m "Change Tag"
