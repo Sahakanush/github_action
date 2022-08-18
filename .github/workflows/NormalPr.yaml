@@ -8,7 +8,10 @@ on:
   pull_request_target:
     types: [opened]
     branches: branch1
-    
+
+env:
+  GIT_TAG: v0.0.1-RC.0
+  
 jobs:      
   Docker:
     runs-on: ubuntu-latest
@@ -22,7 +25,7 @@ jobs:
         run: |
           git clone --branch branch1 https://.:${{ secrets.GIT_TOKEN }}@github.com/Sahakanush/github_action
           cd github_action
-          export GIT_TAG=$(git describe --tags --abbrev=0)
+          GIT_TAG=$(git describe --tags --abbrev=0)
           echo $GIT_TAG
       - name: uxxaki
         run: echo $GIT_TAG
@@ -42,7 +45,7 @@ jobs:
           context: .
           file: Dockerfile
           push: true  
-          #tags: ${{ secrets.DOCKER_HUB_USERNAME }}/WebApp1:${{GIT_TAG}}
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/WebApp1:$GIT_TAG
       
   Change_image:
     runs-on: ubuntu-latest     
