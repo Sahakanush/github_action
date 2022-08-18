@@ -69,6 +69,12 @@ jobs:
           #git push
    
       
-      - name: Get the version
-        id: get_version
-        run: echo ${GITHUB_REF/refs\/tags\//}
+      - name: Extract tag name
+        id: tag
+        uses: actions/github-script@0.2.0
+        with:
+          github-token: ${{ secrets.GIT_TOKEN }}
+          script: |
+            return context.payload.ref.replace(/\/refs\/tags\//, '');
+      - name: Echo
+        run: echo ${{ steps.tag.outputs.result }}
