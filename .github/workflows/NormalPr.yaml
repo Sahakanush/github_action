@@ -56,6 +56,7 @@ jobs:
           cd github_action/work_with_mf
           python3 change_tag.py mytag1
           git status
+          
   #        git config --global user.name "manifest"
  #         git config --global user.email "sahakanush.terteryan2003@gmail.com"
 #
