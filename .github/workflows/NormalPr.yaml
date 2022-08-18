@@ -69,11 +69,6 @@ jobs:
           #git push
    
       
-      - name: Get tag
-        id: tag
-        uses: dawidd6/action-get-tag@v1
-        with:
-    # Optionally strip `v` prefix
-          strip_v: true
-      - name: Use tag
-        run: echo ${{steps.tag.outputs.tag}}
+      - name: Get the version
+        id: get_version
+        run: echo ${GITHUB_REF/refs\/tags\//}
