@@ -69,12 +69,11 @@ jobs:
           #git push
    
       
-      - name: Extract tag name
-        id: tag
-        uses: actions/github-script@0.2.0
+      - name: Get the Ref
+        id: get-ref
+        uses: ankitvgupta/ref-to-tag-action@master
         with:
-          github-token: ${{ secrets.GIT_TOKEN }}
-          script: |
-            return context.payload.ref.replace(/\/refs\/tags\//, '');
-      - name: Echo
-        run: echo ${{ steps.tag.outputs.result }}
+          ref: ${{ github.ref }}
+          head_ref: ${{ github.head_ref }}
+      - name: Get the tag
+        run: echo "The tag was ${{ steps.get-ref.outputs.tag }}"
