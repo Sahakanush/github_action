@@ -55,9 +55,9 @@ jobs:
           pip install pyyaml
 
           git clone --branch branch1 https://.:${{ secrets.GIT_TOKEN }}@github.com/Sahakanush/github_action
-          git tag --list
+          
           cd github_action/work_with_mf
-                   
+          git tag --list         
           python3 change_tag.py mytagX
           
           cd ../../manifest
