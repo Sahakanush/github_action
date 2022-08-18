@@ -17,7 +17,9 @@ jobs:
       
       - name: Checkout1
         uses: actions/checkout@v3
-      
+      - uses: tdemin/find-latest-tag@v1
+        with:
+          repo: https://github.com/Sahakanush/github_action.git
      # - name: Set up QEMU
      #   uses: docker/setup-qemu-action@v2
       
