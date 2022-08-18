@@ -13,12 +13,7 @@ jobs:
   Get_tag:
     runs-on: ubuntu-latest
     steps:
-      - name: Get tag
-        run: |
-          git clone --branch branch1 https://.:${{ secrets.GIT_TOKEN }}@github.com/Sahakanush/github_action
-          cd github_action
-          export GIT_TAG=$(git describe --tags --abbrev=0)
-          echo $GIT_TAG
+      
   Docker:
     runs-on: ubuntu-latest
     if: github.event.pull_request.draft != true
@@ -26,11 +21,13 @@ jobs:
       
       - name: Checkout
         uses: actions/checkout@v3
-      - uses: tdemin/find-latest-tag@v1
-        with:
-          repo: https://github.com/Sahakanush/github_action.git
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v2
+      
+      - name: Get tag
+        run: |
+          git clone --branch branch1 https://.:${{ secrets.GIT_TOKEN }}@github.com/Sahakanush/github_action
+          cd github_action
+          export GIT_TAG=$(git describe --tags --abbrev=0)
+          echo $GIT_TAG
       
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
