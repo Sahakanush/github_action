@@ -63,8 +63,11 @@ jobs:
           git status
           git config --global user.name "sahakanush"
           git config --global user.email "sahakanush.terteryan2003@gmail.com"
-
+          cd ../../github_action
+          git tag --list
           #git add .
           #git commit -m "Change Tag"
           #git push
-      - run: git tag --list
+      
+          
+          
