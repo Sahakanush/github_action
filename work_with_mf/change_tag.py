@@ -1,7 +1,9 @@
 import yaml
 
-with open("mf", "a") as file:
-  data_dict = yaml.dump(file)
+with open('mf') as file:
+  data_dict = yaml.load(file)
   
-  data_dict["image"] = "hello world!!!!!!"
-  print(data_dict)
+  data_dict['image'] = "hello world!!!!!!"
+  
+  with open('mf', 'w') as f:
+        yaml.dump(data_dict, f)
