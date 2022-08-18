@@ -40,6 +40,10 @@ jobs:
       - name: Create new tag if failure
         if: steps.Pytest.outcome != 'success' 
         uses: mathieudutour/github-tag-action@v6.0
+        id: tag_version
         with:
           github_token: ${{ secrets.GIT_TOKEN }}
           append_to_pre_release_tag: RC
+      - name: Find tag
+        run: |
+          echo ${{ steps.tag_version.outputs.new_tag }}
