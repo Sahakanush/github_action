@@ -3,7 +3,7 @@ name: DraftPR
 on:
   push:
     branches:
-      main
+      branch1
   pull_request:
    types: [opened]
    branches: branch1
