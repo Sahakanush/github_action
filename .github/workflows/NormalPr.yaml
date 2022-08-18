@@ -56,6 +56,6 @@ jobs:
           cd github_action/work_with_mf
           echo "--------"
           cat mf
-          python3 change_tag.py
+          python3 change_tag.py mytag
           echo "---------"
           cat mf
