@@ -23,9 +23,10 @@ jobs:
           git clone --branch branch1 https://.:${{ secrets.GIT_TOKEN }}@github.com/Sahakanush/github_action
           cd github_action
           export git_tag=$(git describe --tags --abbrev=0)
-          env:
-            GIT_TAG: $GIT_TAG
           echo $GIT_TAG
+        env:
+          GIT_TAG: $GIT_TAG
+          
       - name: uxxaki
         run: echo $GIT_TAG
       
