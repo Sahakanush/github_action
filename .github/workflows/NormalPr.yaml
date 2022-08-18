@@ -15,7 +15,7 @@ jobs:
     if: github.event.pull_request.draft != true
     steps:
       
-      - name: Checkout1
+      - name: Checkout
         uses: actions/checkout@v3
       - uses: tdemin/find-latest-tag@v1
         with:
