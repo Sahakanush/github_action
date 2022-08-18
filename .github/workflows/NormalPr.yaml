@@ -9,11 +9,7 @@ on:
     types: [opened]
     branches: branch1
     
-jobs:
-  Get_tag:
-    runs-on: ubuntu-latest
-    steps:
-      
+jobs:      
   Docker:
     runs-on: ubuntu-latest
     if: github.event.pull_request.draft != true
