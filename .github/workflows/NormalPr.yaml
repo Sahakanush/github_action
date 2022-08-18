@@ -55,3 +55,5 @@ jobs:
           cp manifest/mf github_action/work_with_mf
           cd github_action/work_with_mf
           python3 change_tag.py
+          echo "---------"
+          cat mf
