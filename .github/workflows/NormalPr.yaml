@@ -55,9 +55,6 @@ jobs:
           cp manifest/mf github_action/work_with_mf
           cd github_action/work_with_mf
           python3 change_tag.py mytag1
-          
-      - name: Push to Git
-        run: |
           git status
   #        git config --global user.name "manifest"
  #         git config --global user.email "sahakanush.terteryan2003@gmail.com"
