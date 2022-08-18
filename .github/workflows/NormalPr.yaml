@@ -57,7 +57,7 @@ jobs:
           git clone --branch branch1 https://.:${{ secrets.GIT_TOKEN }}@github.com/Sahakanush/github_action
           
           cd github_action/work_with_mf
-          git tag --sort=committerdate | tail -1         
+          git tag --sort=committerdate        
           python3 change_tag.py mytagX
           
           cd ../../manifest
