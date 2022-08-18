@@ -53,7 +53,7 @@ jobs:
 
           git clone --branch branch1 https://.:${{ secrets.GIT_TOKEN }}@github.com/Sahakanush/github_action
           cd github_action/work_with_mf
-          cp ../../manifest/mf .
+         
           
           python3 change_tag.py mytagX
           
