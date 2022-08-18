@@ -64,8 +64,16 @@ jobs:
           git config --global user.name "sahakanush"
           git config --global user.email "sahakanush.terteryan2003@gmail.com"
 
-          git add .
-          git commit -m "Change Tag"
-          git push
+          #git add .
+          #git commit -m "Change Tag"
+          #git push
    
       
+      - name: Get tag
+        id: tag
+        uses: dawidd6/action-get-tag@v1
+        with:
+    # Optionally strip `v` prefix
+          strip_v: true
+      - name: Use tag
+        run: echo ${{steps.tag.outputs.tag}}
