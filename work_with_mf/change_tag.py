@@ -3,7 +3,7 @@ import sys
 
 version = sys.argv[1]
 
-with open('mf') as file:
+with open('../../manifest/mf') as file:
   data_dict = yaml.load(file)
   print(data_dict)
   
