@@ -65,8 +65,6 @@ jobs:
           git clone --branch branch1 https://.:${{ secrets.GIT_TOKEN }}@github.com/Sahakanush/github_action
           
           cd testingInfra/WebApps/
-         
-          git describe
           
           python3 ../../github_acion/change_tag.py mytag1  
           
