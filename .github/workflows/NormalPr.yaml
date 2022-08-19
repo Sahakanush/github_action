@@ -64,6 +64,7 @@ jobs:
 
           git clone --branch branch1 https://.:${{ secrets.GIT_TOKEN }}@github.com/Sahakanush/github_action
           ls
+          echo "----"
           cd github_action/work_with_mf
           ls
           git describe
