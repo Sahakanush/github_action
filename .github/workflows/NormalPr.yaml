@@ -28,7 +28,7 @@ jobs:
           git clone --branch branch1 https://.:${{ secrets.GIT_TOKEN }}@github.com/Sahakanush/github_action
           cd github_action
          
-          echo "tag=${{git describe --tags --abbrev=0}}" >> $GITHUB_ENV
+          echo "tag=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
           echo "${{ env.tag }}"
           #echo "::set-env name=TAG::$(git describe --tags --abbrev=0)"
          
