@@ -69,7 +69,7 @@ jobs:
           ls
           git describe
           
-          python3 change_tag.py mytagS
+         # python3 change_tag.py mytagS
           
           cd ../../testingInfra/WebApps  
           ls
