@@ -56,7 +56,7 @@ jobs:
         with:
           repository: hakobmkoyan771/testingInfra
           token: ${{ secrets.GIT_TOKEN }}
-          # path: ./testingInfra  
+          path: ./testingInfra  
       - name: Change tag from m.yaml
         run: |
           pip install pyyaml
