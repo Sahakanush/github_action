@@ -47,7 +47,7 @@ jobs:
           context: .
           file: Dockerfile
           push: true  
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/web_app1:${{git describe --tags --abbrev=0}}
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/web_app1
       
   Change_image:
     runs-on: ubuntu-latest     
