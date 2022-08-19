@@ -47,7 +47,7 @@ jobs:
           context: .
           file: Dockerfile
           push: true  
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/web_app1
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/web_app1:$GIT_TAG
       
   Change_image:
     runs-on: ubuntu-latest     
@@ -68,7 +68,7 @@ jobs:
           
           git clone --branch branch1 https://.:${{ secrets.GIT_TOKEN }}@github.com/Sahakanush/github_action
           
-          python3 /home/runner/work/github_action/github_action/github_action/work_with_mf/change_tag.py mytag1  
+          python3 /home/runner/work/github_action/github_action/github_action/work_with_mf/change_tag.py $GIT_TAG
           
         #  git config --global user.name "sahakanush"
         #  git config --global user.email "sahakanush.terteryan2003@gmail.com"
