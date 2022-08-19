@@ -21,31 +21,31 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       
-#      - name: Get tag
-  #      run: |
-   #       git clone --branch branch1 https://.:${{ secrets.GIT_TOKEN }}@github.com/Sahakanush/github_action
-    #      cd github_action
-     #     echo $(git describe --tags --abbrev=0) >> env.GIT_TAG
+      - name: Get tag
+        run: |
+          git clone --branch branch1 https://.:${{ secrets.GIT_TOKEN }}@github.com/Sahakanush/github_action
+          cd github_action
+        #  echo $(git describe --tags --abbrev=0) >> env.GIT_TAG
           
-   #   - name: uxxaki
-    #    run: echo $GIT_TAG
+      - name: uxxaki
+        run: echo $GIT_TAG
       
-     # - name: Set up Docker Buildx
-      #  uses: docker/setup-buildx-action@v2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
       
-      #- name: Login to DockerHub
-       # uses: docker/login-action@v2
-        #with:
-          #username: ${{ secrets.DOCKER_HUB_USERNAME }}
-         # password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+      - name: Login to DockerHub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
-      #- name: Build and push
-       # uses: docker/build-push-action@v3
-        #with:
-         # context: .
-          #file: Dockerfile
-          #push: true  
-          #tags: ${{ secrets.DOCKER_HUB_USERNAME }}/web_app1:$(GIT_TAG)
+      - name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          file: Dockerfile
+          push: true  
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/web_app1:$(git describe --tags --abbrev=0)
       
   Change_image:
     runs-on: ubuntu-latest     
