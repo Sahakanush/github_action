@@ -42,7 +42,7 @@ jobs:
      #     to_file: 'README.md'
     #      commit: 'true'
       - name: Get tag
-        run: echo "$env.tag"
+        run: echo "${env.tag}"
       
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
