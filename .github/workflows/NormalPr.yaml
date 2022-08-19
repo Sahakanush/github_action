@@ -10,11 +10,13 @@ on:
     branches: branch1
 
 env:
-  GIT_TAG: v0.1.0-RC.1
-  
-jobs:      
+    GIT_TAG: '0.0.1-RC.1'
+    
+jobs:   
   Docker:
     runs-on: ubuntu-latest
+    
+       
     if: github.event.pull_request.draft != true
     steps:
       
@@ -25,10 +27,10 @@ jobs:
         run: |
           git clone --branch branch1 https://.:${{ secrets.GIT_TOKEN }}@github.com/Sahakanush/github_action
           cd github_action
+          echo "$GIT_TAG"
         #  echo $(git describe --tags --abbrev=0) >> env.GIT_TAG
-          
-      - name: uxxaki
-        run: echo $GIT_TAG
+    
+  
       
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
