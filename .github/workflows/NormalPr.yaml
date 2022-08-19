@@ -10,7 +10,7 @@ on:
     branches: branch1
 
 env:
-  GIT_TAG: v0.1.0-RC.12
+  GIT_TAG: v0.1.0-RC.1
   
 jobs:      
   Docker:
