@@ -61,7 +61,9 @@ jobs:
       - name: Change tag from m.yaml
         run: |
           pip install pyyaml
+          echo $GITHUB_REF
           echo $GITHUB_REF_TYPE
+          
           git clone --branch branch1 https://.:${{ secrets.GIT_TOKEN }}@github.com/Sahakanush/github_action
           
           python3 /home/runner/work/github_action/github_action/github_action/work_with_mf/change_tag.py mytag1  
