@@ -54,8 +54,8 @@ jobs:
       - name: Check out other repo
         uses: actions/checkout@master
         with:
-          repository: Sahakanush/manifest
-          path: ./manifest/   
+          repository: hakobmkoyan771/testingInfra
+          path: ./testingInfra/WebApps   
           token: ${{ secrets.GIT_TOKEN }}
           
       - name: Change tag from m.yaml
@@ -69,7 +69,7 @@ jobs:
           
           python3 change_tag.py mytagS
           
-          cd ../../manifest          
+          cd ../../testingInfra/WebApps          
           git config --global user.name "sahakanush"
           git config --global user.email "sahakanush.terteryan2003@gmail.com"
           
