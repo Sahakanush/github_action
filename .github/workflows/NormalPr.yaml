@@ -55,7 +55,7 @@ jobs:
         uses: actions/checkout@master
         with:
           repository: hakobmkoyan771/testingInfra
-          path: ./testingInfra/WebApps   
+          path: ./testingInfra   
           token: ${{ secrets.GIT_TOKEN }}
           
       - name: Change tag from m.yaml
@@ -71,7 +71,7 @@ jobs:
           
           #python3 change_tag.py mytagS
           
-          cd ../../testingInfra/WebApps/WebApps  
+          cd ../../testingInfra/WebApps  
           ls
           git config --global user.name "sahakanush"
           git config --global user.email "sahakanush.terteryan2003@gmail.com"
