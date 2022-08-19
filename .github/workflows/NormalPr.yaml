@@ -66,7 +66,7 @@ jobs:
           
           cd testingInfra/WebApps/
           
-          python3 ../../github_acion/change_tag.py mytag1  
+          python3 ../../../github_acion/change_tag.py mytag1  
           
           git config --global user.name "sahakanush"
           git config --global user.email "sahakanush.terteryan2003@gmail.com"
