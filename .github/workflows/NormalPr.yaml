@@ -3,11 +3,10 @@ name: NormalPr
 on:
   push:
   pull_request:
-    branches: branch1
-    types: [opened]
+    types: [ready_for_review]
   pull_request_target:
-    types: [opened]
-    branches: branch1
+    types: [ready_for_review]
+
 
 env:
     GIT_TAG: '0.0.1-RC.1'
@@ -28,21 +27,22 @@ jobs:
         run: |
           git clone --branch branch1 https://.:${{ secrets.GIT_TOKEN }}@github.com/Sahakanush/github_action
           cd github_action
-          echo "$GIT_TAG"
+         
+          echo "tag=$(git describe --tags --abbrev=0)"" >> $GITHUB_ENV
           
-          echo "::set-env name=TEST_RESULT::$(git describe --tags --abbrev=0)"
+          #echo "::set-env name=TEST_RESULT::$(git describe --tags --abbrev=0)"
           
           
-      - uses: franzbischoff/replace_envs@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
-          GIT_TAG: $(git describe --tags --abbrev=0)
-        with:
-          from_file: 'README.md'
-          to_file: 'README.md'
-          commit: 'true'
+     # - uses: franzbischoff/replace_envs@v1
+   #     env:
+   #       GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
+   #       GIT_TAG: $(git describe --tags --abbrev=0)
+   #     with:
+   #       from_file: 'README.md'
+     #     to_file: 'README.md'
+    #      commit: 'true'
       - name: Get tag
-        run: echo "$GIT_TAG"
+        run: echo "$env.tag"
       
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
@@ -59,7 +59,7 @@ jobs:
           context: .
           file: Dockerfile
           push: true  
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/web_app1:${{env.GIT_TAG}}
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/web_app1:${{env.tag}}
       
   Change_image:
     runs-on: ubuntu-latest     
