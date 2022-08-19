@@ -71,7 +71,7 @@ jobs:
           
           #python3 change_tag.py mytagS
           
-          cd ../../testingInfra/WebApps/  
+          cd ../../testingInfra/WebApps/WebApps  
           ls
           git config --global user.name "sahakanush"
           git config --global user.email "sahakanush.terteryan2003@gmail.com"
