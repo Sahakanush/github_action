@@ -11,7 +11,6 @@ on:
 
 env:
     GIT_TAG: '0.0.1-RC.1'
-    Git_tag: ''
     
 jobs:   
   Docker:
