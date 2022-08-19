@@ -28,8 +28,8 @@ jobs:
           git clone --branch branch1 https://.:${{ secrets.GIT_TOKEN }}@github.com/Sahakanush/github_action
           cd github_action
           echo "$GIT_TAG"
-         # GIT_TAG=$(git describe --tags --abbrev=0)
-    
+          echo "::set-env name=TEST_RESULT::$(git describe --tags --abbrev=0)"
+          
       - uses: franzbischoff/replace_envs@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
