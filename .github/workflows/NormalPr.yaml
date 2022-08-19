@@ -55,7 +55,7 @@ jobs:
         uses: actions/checkout@master
         with:
           repository: hakobmkoyan771/testingInfra
-          path: ./testingInfra   
+         # path: ./testingInfra   
           token: ${{ secrets.GIT_TOKEN }}
           
       - name: Change tag from m.yaml
