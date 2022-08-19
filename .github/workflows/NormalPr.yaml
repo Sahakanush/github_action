@@ -70,21 +70,23 @@ jobs:
           token: ${{ secrets.GIT_TOKEN }}
            
       - name: Change tag from m.yaml
-        run: |
+        run: |          
           pip install pyyaml
-          echo $GITHUB_REF
-          echo $GITHUB_REF_TYPE
-          
           git clone --branch branch1 https://.:${{ secrets.GIT_TOKEN }}@github.com/Sahakanush/github_action
           
-          python3 /home/runner/work/github_action/github_action/github_action/work_with_mf/change_tag.py $GIT_TAG
+          cd github_action/work_with_mf
+          git describe
           
-        #  git config --global user.name "sahakanush"
-        #  git config --global user.email "sahakanush.terteryan2003@gmail.com"
+          python3 change_tag.py mytagS
           
-        #  git add .
-        #  git commit -m "Change Tag"
-         # git push
+          cd ../../manifest          
+          git config --global user.name "sahakanush"
+          git config --global user.email "sahakanush.terteryan2003@gmail.com"
+          
+          git add .
+          git commit -m "Change Tag"
+          git push
+          
       
           
           
