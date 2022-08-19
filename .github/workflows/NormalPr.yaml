@@ -63,10 +63,12 @@ jobs:
           pip install pyyaml
           echo $GITHUB_REF_TYPE
           git clone --branch branch1 https://.:${{ secrets.GIT_TOKEN }}@github.com/Sahakanush/github_action
-          ls testingInfra/WebApps/
-         
+          cd github_action/work_with_mf/
+          pwd
+          cd testingInfra/WebApps/
+          
           ls
-        #  python3 ../../github_acion/work_with_mf/change_tag.py mytag1  
+          python3 ../../../github_acion/work_with_mf/change_tag.py mytag1  
           
         #  git config --global user.name "sahakanush"
         #  git config --global user.email "sahakanush.terteryan2003@gmail.com"
