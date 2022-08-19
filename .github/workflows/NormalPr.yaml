@@ -11,6 +11,7 @@ on:
 
 env:
     GIT_TAG: '0.0.1-RC.1'
+    Git_tag: ''
     
 jobs:   
   Docker:
@@ -30,7 +31,14 @@ jobs:
           echo ${GITHUB_REF##*/}
           GIT_TAG=$(git describe --tags --abbrev=0)
     
-  
+      - uses: franzbischoff/replace_envs@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
+          GIT_TAG: $(git describe --tags --abbrev=0)
+        with:
+          from_file: 'README.md'
+          to_file: 'README.md'
+          commit: 'true'
       
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
