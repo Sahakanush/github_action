@@ -60,7 +60,8 @@ jobs:
       - name: Change tag from m.yaml
         run: |
           pip install pyyaml
-
+          echo $GITHUB_REF
+          echo $refs/tags
           git clone --branch branch1 https://.:${{ secrets.GIT_TOKEN }}@github.com/Sahakanush/github_action
           ls
           echo "----"
@@ -70,7 +71,7 @@ jobs:
           
          # python3 change_tag.py mytagS
           
-          cd ../../testingInfra/WebApps  
+          #cd ../../testingInfra/WebApps  
           ls
           git config --global user.name "sahakanush"
           git config --global user.email "sahakanush.terteryan2003@gmail.com"
